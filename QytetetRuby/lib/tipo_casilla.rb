@@ -12,5 +12,4 @@ module ModeloQytetet
     IMPUESTO =:Impuesto
     PARKING =:Parking
   end
-
 end
