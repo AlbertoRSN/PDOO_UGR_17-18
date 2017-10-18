@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author albertorodriguez
+ * @author Alberto Rodriguez Santana
  */
 public class Tablero {
     
@@ -59,8 +59,6 @@ public class Tablero {
         casillas.add(new Casilla(17, TipoCasilla.SORPRESA));
         casillas.add(new Casilla(18, 130, 2, 2, TipoCasilla.CALLE, titulo11));
         casillas.add(new Casilla(19, 200, 2, 2, TipoCasilla.CALLE, titulo12));
-        
-        
         
         
                 
