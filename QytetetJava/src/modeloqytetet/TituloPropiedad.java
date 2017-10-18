@@ -76,4 +76,21 @@ public class TituloPropiedad {
     }
     // --------------- ---------------- ----------------
     
+    
+//    
+//    
+//    TituloPropiedad titulo1 = new TituloPropiedad("Abrazamozas", 50, 10, 150, 250);
+//    TituloPropiedad titulo2 = new TituloPropiedad("Catahuevos", 50, 10, 200, 275);
+//    TituloPropiedad titulo3 = new TituloPropiedad("Las Flores", 55, 12, 250, 300);
+//    TituloPropiedad titulo4 = new TituloPropiedad("Animales Salvajes", 60, 12, 300, 350);
+//    TituloPropiedad titulo5 = new TituloPropiedad("Rompelanzas", 65, 13, 350, 400 );
+//    TituloPropiedad titulo6 = new TituloPropiedad("Frutos Del Bosque", 70, 14, 400, 450);
+//    TituloPropiedad titulo7 = new TituloPropiedad("La Alegria de la Huerta", 75, 15, 500, 500);
+//    TituloPropiedad titulo8 = new TituloPropiedad("Malpensá", 80, 15, 600, 550);
+//    TituloPropiedad titulo9 = new TituloPropiedad("Del Amor Hermoso", 90, 18, 700, 600);
+//    TituloPropiedad titulo10 = new TituloPropiedad("Rio Caliente", 95, 18, 800, 650);
+//    TituloPropiedad titulo11 = new TituloPropiedad("Rompete El Alma", 20, 100, 900, 700);
+//    TituloPropiedad titulo12 = new TituloPropiedad("Salsipuedes", 100, 20, 1000, 750);
+//    
+    
 }
