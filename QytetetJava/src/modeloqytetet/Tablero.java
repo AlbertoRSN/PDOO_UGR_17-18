@@ -15,10 +15,12 @@ public class Tablero {
     
     private static ArrayList<Casilla> casillas = new ArrayList();
     private Casilla carcel;
+    //private Casilla carcel = new Casilla;
 
     public Tablero(){
 //         casillas = new ArrayList(20);
 //         casillas.add(Casilla)
+        this.inicializar();
     }
     
     public Casilla getCarcel() {
@@ -28,6 +30,9 @@ public class Tablero {
     private void inicializar(){
         
         casillas = new ArrayList();
+        
+        //casillas.add(carcel);
+        //carcel = casillas.get(7);
         
         TituloPropiedad titulo1 = new TituloPropiedad("Abrazamozas", 75, 10, 150, 250);
         TituloPropiedad titulo2 = new TituloPropiedad("Catahuevos", 75, 10, 150, 250);
