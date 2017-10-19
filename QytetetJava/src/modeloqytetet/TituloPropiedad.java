@@ -92,5 +92,13 @@ public class TituloPropiedad {
 //    TituloPropiedad titulo11 = new TituloPropiedad("Rompete El Alma", 20, 100, 900, 700);
 //    TituloPropiedad titulo12 = new TituloPropiedad("Salsipuedes", 100, 20, 1000, 750);
 //    
+
+    @Override
+    public String toString() {
+        return "{" + "nombre=" + nombre + ", hipotecada=" + hipotecada + ", alquilerBase=" + alquilerBase + ", factorRevalorizacion=" + factorRevalorizacion + ", hipotecaBase=" + hipotecaBase + ", precioEdificar=" + precioEdificar + '}';
+    }
+    
+    
+    
     
 }

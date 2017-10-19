@@ -23,12 +23,19 @@ public class Casilla {
         this.numeroCasilla=numeroCasilla;
         this.tipo=tipo;
     }
+    
+    //CONSTRUCTOR PARA LA CASILLA DE TIPO IMPUESTO
+    public Casilla(int numeroCasilla, int coste, TipoCasilla tipo){
+        this.numeroCasilla=numeroCasilla;
+        this.coste=coste;
+        this.tipo=tipo;
+    }
 
-    public Casilla(int numeroCasilla, int coste, int numHoteles, int numCasas, TipoCasilla tipo, TituloPropiedad titulo) {
+    public Casilla(int numeroCasilla, int coste, TipoCasilla tipo, TituloPropiedad titulo) {
         this.numeroCasilla = numeroCasilla;
         this.coste = coste;
-        this.numHoteles = numHoteles;
-        this.numCasas = numCasas;
+        this.numHoteles = 0;
+        this.numCasas = 0;
         this.tipo = tipo;
         this.titulo = titulo;
     }  
