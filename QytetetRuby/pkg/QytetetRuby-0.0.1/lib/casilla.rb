@@ -13,37 +13,39 @@ module ModeloQytetet
     attr_accessor :tipo #TipoCasilla
     attr_accessor :titulo #TituloPropiedad
     
+    private :titulo=
     
-    private :numeroCasilla, :coste, :numHoteles, :numCasas, :tipo, :titulo
-    
-    def initialize(numeroCasilla, coste, numHoteles, numCasas, tipo, titulo)
+    def initialize(numeroCasilla, coste, tipo, titulo)
       @numeroCasilla = numeroCasilla
       @coste = coste
-      @numHoteles = numHoteles
-      @numCasas = numCasas
+      @numHoteles = 0
+      @numCasas = 0
       @tipo = tipo
       @titulo=titulo      
     end
+  
+    #CONSTRUCTORES CON OTRO NOMBRE
+    def self.new_casilla(numeroCasilla, tipo)
+      new(numeroCasilla,0,tipo,nil)
+    end
     
-    def self.new_casilla(numeroCasilla, coste, numHoteles, numCasas, tipo, titulo=nill)
-      
+    def self.new_casilla_impuesto(numeroCasilla, coste, tipo)
+      new(numeroCasilla,coste,tipo,nil)
     end
 
     
     def to_s()
       if tipo == TipoCasilla::CALLE
-        " \n Casilla{ NumeroCasilla: #{@numeroCasilla} \n Coste: #{@coste} \n numHoteles: #{@numHoteles} \n numCasas: #{@numCasas} \n Tipo: #{@tipo} \n Titulo: #{@tipo}}"
+        " \n Casilla{ \n NumeroCasilla: #{@numeroCasilla} \n Coste: #{@coste} \n numHoteles: #{@numHoteles} \n numCasas: #{@numCasas} \n Tipo: #{@tipo} \n Titulo: #{@tipo} \n }"
       else
-        " \n Casilla{ NumeroCasilla: #{@numeroCasilla} \n Tipo: #{@tipo}}"
+        if tipo == TipoCasilla::IMPUESTO
+           " \n Casilla{ \n NumeroCasilla: #{@numeroCasilla} \n Coste: #{@coste} \n Tipo: #{@tipo} \n }"
+        else
+          " \n Casilla{ \n NumeroCasilla: #{@numeroCasilla} \n Tipo: #{@tipo} \n }" 
+        end
       end
     end
-        
-         
-      end
     
-    private
-    def set_titulo_propiedad(titulo)
-      @titulo=titulo
-    end
   end
 end
+

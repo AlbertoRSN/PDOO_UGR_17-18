@@ -4,6 +4,9 @@
 
 require_relative "sorpresa"
 require_relative "tipo_sorpresa"
+require_relative "casilla"
+require_relative "tipo_casilla"
+require_relative "titulo_propiedad"
 
 module ModeloQytetet
   
@@ -62,7 +65,16 @@ module ModeloQytetet
       puts "\n---------------METODO3 - TIPOSORPRESA = ARGUMENTO-----------------"
       metodo3 (TipoSorpresa::SALIRCARCEL)
       puts "\n------------------------------------------------------------------"
-
+      
+      puts "\n-----------------------MOSTRAR CASILLAS --------------------------"
+      
+      puts Casilla.new(4, 10, TipoCasilla::CALLE, TituloPropiedad.new("HOLA", 10, 2, 10, 20))
+      puts Casilla.new_casilla(6, TipoCasilla::PARKING)
+      puts Casilla.new_casilla_impuesto(8, 100, TipoCasilla::IMPUESTO)
+      
+      puts "\n------------------------------------------------------------------"
+      
+        
     end
     
   #End de la CLASE    

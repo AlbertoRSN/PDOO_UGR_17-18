@@ -6,28 +6,25 @@ module ModeloQytetet
   
   class TituloPropiedad
     
-    attr_accessor :nombre //Strign/
-    attr_writter :hipotecada //boleano/
-    attr_accessor :alquilerBase //int/
-    attr_accessor :factorRevalorizacion //float/
-    attr_accessor :hipotecaBase //int/
-    attr_accessor :precioEdificar //int/
-    
-    private :nombre, :hipotecada, :alquilerBase, :factorRevalorizacion, :hipotecaBase, :precioEdificar
+    attr_accessor :nombre #Strign/
+    attr_accessor :hipotecada #boleano/
+    attr_accessor :alquilerBase #int/
+    attr_accessor :factorRevalorizacion #float/
+    attr_accessor :hipotecaBase #int/
+    attr_accessor :precioEdificar #int/
     
     def initialize(nombre, alquilerBase, factorRevalorizacion, hipotecaBase, precioEdificar)
       @nombre = nombre
       @alquilerBase = alquilerBase
       @factorRevalorizacion = factorRevalorizacion
+      @hipotecada = false
       @hipotecaBase = hipotecaBase
       @precioEdificar = precioEdificar
+    end    
+    
+    def to_s()
+      "\n Nombre: #{@nombre} \n Hipotecada: #{@hipotecada} \n Alquiler Base: #{@alquilerBase} \n Factor Revalorizacion: #{@factorRevalorizacion} \n Hipote Base: #{@hipotecaBase} \n Precio Edificar: #{@precioEdificar} \n }" 
     end
-    
-    #¿Es necesario habiendo attr_writter?
-    def set_hipotecada(hipotecada)
-      @hipotecada=hipotecada
-    end
-    
-    
+      
   end
 end
