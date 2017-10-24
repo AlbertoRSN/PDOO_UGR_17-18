@@ -36,12 +36,12 @@ module ModeloQytetet
     
     def to_s()
       if tipo == TipoCasilla::CALLE
-        " \n Casilla{ \n NumeroCasilla: #{@numeroCasilla} \n Coste: #{@coste} \n numHoteles: #{@numHoteles} \n numCasas: #{@numCasas} \n Tipo: #{@tipo} \n Titulo: #{@tipo} \n }"
+        " \n Casilla{ \n    NumeroCasilla: #{@numeroCasilla} \n    Coste: #{@coste} \n    numHoteles: #{@numHoteles} \n    numCasas: #{@numCasas} \n    Tipo: #{@tipo} \n    Titulo: #{@titulo} \n }"
       else
         if tipo == TipoCasilla::IMPUESTO
-           " \n Casilla{ \n NumeroCasilla: #{@numeroCasilla} \n Coste: #{@coste} \n Tipo: #{@tipo} \n }"
+           " \n Casilla{ \n    NumeroCasilla: #{@numeroCasilla} \n    Coste: #{@coste} \n    Tipo: #{@tipo} \n }"
         else
-          " \n Casilla{ \n NumeroCasilla: #{@numeroCasilla} \n Tipo: #{@tipo} \n }" 
+          " \n Casilla{ \n    NumeroCasilla: #{@numeroCasilla} \n    Tipo: #{@tipo} \n }" 
         end
       end
     end

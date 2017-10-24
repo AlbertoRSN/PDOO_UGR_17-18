@@ -7,6 +7,8 @@ require_relative "tipo_sorpresa"
 require_relative "casilla"
 require_relative "tipo_casilla"
 require_relative "titulo_propiedad"
+require_relative "tablero"
+
 
 module ModeloQytetet
   
@@ -74,7 +76,13 @@ module ModeloQytetet
       
       puts "\n------------------------------------------------------------------"
       
-        
+      puts "\n-----------------------MOSTRAR TABLERO---------------------------"
+      #COMO MOSTRAR EL TABLERO.
+      #Tablero t = Tablero.new()
+      puts Tablero.new
+      
+      puts "\n------------------------------------------------------------------"
+          
     end
     
   #End de la CLASE    
@@ -82,5 +90,6 @@ module ModeloQytetet
   
   PruebaQytetet.inicializar_sorpresas
   PruebaQytetet.main
+  
  
 end
