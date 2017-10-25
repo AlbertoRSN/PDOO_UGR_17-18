@@ -16,8 +16,11 @@ public class Casilla {
     private int numHoteles;
     private int numCasas;
     private TipoCasilla tipo;
-    private TituloPropiedad titulo;
+    private TituloPropiedad titulo = null; //inicializado a null porque en la asociacion indica que puede ser 0..1
     
+    
+    //---------------------------------------------------------------------------------------
+    //--------------------------------CONSTRUCTORES---------------------------------------
     //Constructor para casillas que no son de tipo calle
     public Casilla(int numeroCasilla, TipoCasilla tipo){
         this.numeroCasilla=numeroCasilla;
@@ -38,7 +41,9 @@ public class Casilla {
         this.numCasas = 0;
         this.tipo = tipo;
         this.titulo = titulo;
-    }  
+    } 
+    //---------------------------------------------------------------------------------------
+  
 
     @Override
     public String toString() {
@@ -54,19 +59,23 @@ public class Casilla {
         this.titulo=titulo;
     }
     
-    public int getNumeroCasilla() {
+    //modidificada la visibilidad en P2 de public a package
+    int getNumeroCasilla() {
         return numeroCasilla;
     }
 
-    public int getCoste() {
+    //modidificada la visibilidad en P2 de public a package
+    int getCoste() {
         return coste;
     }
-
-    public int getNumHoteles() {
+    
+    //modidificada la visibilidad en P2 de public a package
+    int getNumHoteles() {
         return numHoteles;
     }
 
-    public int getNumCasas() {
+    //modidificada la visibilidad en P2 de public a package
+    int getNumCasas() {
         return numCasas;
     }
 
@@ -78,16 +87,89 @@ public class Casilla {
         return titulo;
     }
 
-    public void setNumHoteles(int numHoteles) {
-        this.numHoteles = numHoteles;
+    //modidificada la visibilidad en P2 de public a package
+    void setNumHoteles(int nuevoNumero) {
+        numHoteles = nuevoNumero;
     }
 
-    public void setNumCasas(int numCasas) {
-        this.numCasas = numCasas;
+    //modidificada la visibilidad en P2 de public a package
+    void setNumCasas(int nuevoNumero) {
+        numCasas = nuevoNumero;
     }
 
+    //---------------------------------------------------------------------------------------
+    //--------------------------------METODOS AÑADIDOS P2------------------------------------
+    TituloPropiedad asignarPropietario(Jugador jugador){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
     
-
+    int calcularValorHipoteca(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int cancelarHipoteca(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int cobrarAlquiler(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int edificarCasa(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int edificarHotel(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    boolean estaHipotecada(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int getCosteHipoteca(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int getPrecioEdificar(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int hipotecar(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int precioTotalComprar(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    boolean propietarioEncarcelado(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    boolean sePuedeEdificarCasa(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    boolean sePuedeEdificarHotel(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    boolean soyEdificable(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    boolean tengoPropietario(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    int venderTitulo(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    private void asignarTituloPropiedad(){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
 
 
 }

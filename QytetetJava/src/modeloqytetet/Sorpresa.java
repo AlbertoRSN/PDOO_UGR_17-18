@@ -12,7 +12,7 @@ package modeloqytetet;
 public class Sorpresa {
     
     private String texto;
-    private TipoSorpresa tipo;
+    private TipoSorpresa tipo; //PORQUE ESTE ATRIBUTO ES PRIVADO, SI ES DE LA CLASE TIPOSORPRESA
     private int valor;
     
     public Sorpresa(String texto, int valor, TipoSorpresa tipo){

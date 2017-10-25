@@ -10,14 +10,20 @@ import java.util.ArrayList;
 
 public class Tablero {
     
-    private static ArrayList<Casilla> casillas;
+    private static ArrayList<Casilla> casillas; //MAX_CASILLAS - debe ser ordenado por numero de casilla
     private Casilla carcel = new Casilla(5, TipoCasilla.CARCEL);
 
+    
+    
+    //------------------------------------------------------------------------------------------------
+    //METODOS
+    
     public Tablero(){
         this.inicializar();
     }
     
-    public Casilla getCarcel() {
+    //Modificado p2 -> Antes era public, ahora package
+    Casilla getCarcel() {
         return carcel;
     }
 
@@ -63,11 +69,30 @@ public class Tablero {
                 
     }
 
-    //QUE MOSTRAR EN ESTE TOSTRING
     @Override
     public String toString() {
         return "\n- TABLERO - " + casillas.toString() + "\n - TABLERO -";
     }
+    
+    
+    
+    //METODOS NUEVOS AÑADIDOS PRACTICA 2
+    boolean esCasillaCarcel(int numeroCasilla){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    Casilla obtenerCasillaNumero(int numeroCasilla){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    Casilla obtenerNuevaCasilla(Casilla casilla, int desplazamiento){
+        throw new UnsupportedOperationException("Sin Implementar");
+    }
+    
+    
+    
+    
+    
     
     
     
