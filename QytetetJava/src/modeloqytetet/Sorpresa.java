@@ -12,15 +12,23 @@ package modeloqytetet;
 public class Sorpresa {
     
     private String texto;
-    private TipoSorpresa tipo; //PORQUE ESTE ATRIBUTO ES PRIVADO, SI ES DE LA CLASE TIPOSORPRESA
+    private TipoSorpresa tipo;
     private int valor;
+    
+    
+    //----------------------------CONSTRUCTOR--------------------------------
+
+    private Sorpresa(){}
     
     public Sorpresa(String texto, int valor, TipoSorpresa tipo){
         this.texto=texto;
         this.valor=valor;
         this.tipo=tipo;
     }
-    
+
+
+    //-------------------------CONSULTORES----------------------------------
+
     String getTexto(){
         return this.texto;
     }
@@ -34,6 +42,7 @@ public class Sorpresa {
     }
     
     
+    //-------------------------TOSTRING---------------------------------- 
     @Override
         public String toString() {
              return "Sorpresa{" + "texto=" + texto + ", valor=" +

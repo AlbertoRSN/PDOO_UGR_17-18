@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modeloqytetet;
 
 /**
@@ -21,13 +17,9 @@ public class Casilla {
     
     //---------------------------------------------------------------------------------------
     //--------------------------------CONSTRUCTORES---------------------------------------
-    //Constructor para casillas que no son de tipo calle
-    public Casilla(int numeroCasilla, TipoCasilla tipo){
-        this.numeroCasilla=numeroCasilla;
-        this.tipo=tipo;
-    }
+    private Casilla(){}
     
-    //CONSTRUCTOR PARA LA CASILLA DE TIPO IMPUESTO
+   //Constructor para casillas que no son de tipo calle
     public Casilla(int numeroCasilla, int coste, TipoCasilla tipo){
         this.numeroCasilla=numeroCasilla;
         this.coste=coste;
@@ -44,17 +36,7 @@ public class Casilla {
     } 
     //---------------------------------------------------------------------------------------
   
-
-    @Override
-    public String toString() {
-        if(tipo==TipoCasilla.CALLE)
-            return "\nCasilla{" + "numeroCasilla=" + numeroCasilla + ", coste=" + coste + ", numHoteles=" + numHoteles + ", numCasas=" + numCasas + ", tipo=" + tipo + ", titulo=" + titulo + '}';
-        else
-            return "\nCasilla{" + "numeroCasilla=" + numeroCasilla + ", tipo=" + tipo + '}';
-    }
-    
- 
-    
+    //----------------------------CONSULTORES/MODIFICADORES---------------------------------
     private void setTituloPropiedad(TituloPropiedad titulo){
         this.titulo=titulo;
     }
@@ -83,7 +65,7 @@ public class Casilla {
         return tipo;
     }
 
-    public TituloPropiedad getTitulo() {
+    public TituloPropiedad getTituloPropiedad() {
         return titulo;
     }
 
@@ -172,5 +154,16 @@ public class Casilla {
     }
 
 
+    //--------------------------------TOSTRING---------------------------------------
+    @Override
+    public String toString() {
+        if(tipo==TipoCasilla.CALLE)
+            return "\n\tCasilla{" + "numeroCasilla=" + numeroCasilla + ", coste=" + coste + ", numHoteles=" + numHoteles + ", numCasas=" + numCasas + ", tipo=" + tipo + ", titulo=" + titulo + '}';
+        else
+            return "\n\tCasilla{" + "numeroCasilla=" + numeroCasilla + ", tipo=" + tipo + '}';
+    }
+    
+    
+    
 }
 

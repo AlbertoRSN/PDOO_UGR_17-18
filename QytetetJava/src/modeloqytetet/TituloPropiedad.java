@@ -14,8 +14,16 @@ public class TituloPropiedad {
     private int hipotecaBase;
     private int precioEdificar;
     
+    //Atributo de la clase CASILLA
+    private Casilla casilla;
+    
+    //Atributo de la clase JUGADOR
+    private Jugador propietario;
+    
     
     //-----------CONSTRUCTOR POR PARAMETROS------------
+    private TituloPropiedad(){}
+    
     public TituloPropiedad(String nombre, int alquilerBase, float factorRevalorizacion, int hipotecaBase, int precioEdificar ){
         this.nombre=nombre;
         this.alquilerBase=alquilerBase;
@@ -23,11 +31,22 @@ public class TituloPropiedad {
         this.hipotecaBase=hipotecaBase;
         this.precioEdificar=precioEdificar;   
     }
+    
+    //  CONSTRUCTOR PARA VER SI TIENE PROPIETARIO
+    public TituloPropiedad(String nombre, int alquilerBase, float factorRevalorizacion, int hipotecaBase, int precioEdificar, Jugador propiertario, Casilla casilla ){
+        this.nombre=nombre;
+        this.alquilerBase=alquilerBase;
+        this.factorRevalorizacion=factorRevalorizacion;
+        this.hipotecaBase=hipotecaBase;
+        this.precioEdificar=precioEdificar;
+        this.propietario = propietario;
+        this.casilla = casilla;
+    }
 
      
     // ---------------METODOS GETS - SETS----------------
-    
-    public String getNombre() {
+    //VISIBILIDAD CAMBIADA A PACKAGE EN LA P2 EN LOS METODOS GET
+    String getNombre() {
         return nombre;
     }
 
@@ -35,7 +54,7 @@ public class TituloPropiedad {
         this.nombre = nombre;
     }
 
-    public boolean isHipotecada() {
+    boolean getHipotecada() {
         return hipotecada;
     }
 
@@ -43,7 +62,7 @@ public class TituloPropiedad {
         this.hipotecada = hipotecada;
     }
 
-    public int getAlquilerBase() {
+    int getAlquilerBase() {
         return alquilerBase;
     }
 
@@ -51,7 +70,7 @@ public class TituloPropiedad {
         this.alquilerBase = alquilerBase;
     }
 
-    public float getFactorRevalorizacion() {
+    float getFactorRevalorizacion() {
         return factorRevalorizacion;
     }
 
@@ -59,7 +78,7 @@ public class TituloPropiedad {
         this.factorRevalorizacion = factorRevalorizacion;
     }
 
-    public int getHipotecaBase() {
+    int getHipotecaBase() {
         return hipotecaBase;
     }
 
@@ -67,13 +86,44 @@ public class TituloPropiedad {
         this.hipotecaBase = hipotecaBase;
     }
 
-    public int getPrecioEdificar() {
+    int getPrecioEdificar() {
         return precioEdificar;
     }
 
     public void setPrecioEdificar(int precioEdificar) {
         this.precioEdificar = precioEdificar;
     }
+    
+    //METODOS NUEVOS P2
+    Jugador getPropietario(){
+        return propietario;
+    }
+    
+    void setPropietario(Jugador propietario){
+        this.propietario = propietario;
+    }
+    
+    Casilla getCasilla(){
+        return casilla;
+    }
+    
+    void setCasilla(Casilla casilla){
+        this.casilla = casilla;
+    }
+    
+    void cobrarAlquiler(int coste){
+        throw new UnsupportedOperationException("Sin Implementar"); 
+    }
+    
+    boolean propietarioEncarcelado(){
+        throw new UnsupportedOperationException("Sin Implementar"); 
+    }
+    
+    boolean tengoPropietario(){
+        throw new UnsupportedOperationException("Sin Implementar"); 
+    }
+    
+    
     // --------------- ---------------- ----------------
     
     
@@ -95,7 +145,11 @@ public class TituloPropiedad {
 
     @Override
     public String toString() {
-        return "{" + "nombre=" + nombre + ", hipotecada=" + hipotecada + ", alquilerBase=" + alquilerBase + ", factorRevalorizacion=" + factorRevalorizacion + ", hipotecaBase=" + hipotecaBase + ", precioEdificar=" + precioEdificar + '}';
+//        if(tengoPropietario() == true)
+            return "{" + "Nombre: " + nombre + ", Hipotecada: " + hipotecada + ", Alquiler Base: " + alquilerBase + ", Factor Revalorizacion=" + factorRevalorizacion + ", Hipoteca Base: " + hipotecaBase + ", Precio Edificar: " + precioEdificar + '}'; //"Propietario: " + propietario.toString() + "Casilla: " + casilla.toString() +'}';
+       // else
+         //   return "{" + "nombre=" + nombre + ", hipotecada=" + hipotecada + ", alquilerBase=" + alquilerBase + ", factorRevalorizacion=" + factorRevalorizacion + ", hipotecaBase=" + hipotecaBase + ", precioEdificar=" + precioEdificar + '}';
+   
     }
     
     

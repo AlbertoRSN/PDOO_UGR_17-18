@@ -9,7 +9,6 @@ class Dado {
     
     
     //AL SER UNA CLASE SINGLETON, COMO DEVOLVER EL OBJETO.
-    
     private static final Dado instance = new Dado();
     
     //Constructor privado
