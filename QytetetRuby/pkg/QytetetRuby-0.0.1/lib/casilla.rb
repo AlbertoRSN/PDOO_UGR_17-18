@@ -24,12 +24,14 @@ module ModeloQytetet
       @titulo=titulo      
     end
   
+    private_class_method :new
+    
     #CONSTRUCTORES CON OTRO NOMBRE
-    def self.new_casilla(numeroCasilla, tipo)
-      new(numeroCasilla,0,tipo,nil)
+    def self.new_casilla_calle(numeroCasilla, coste, titulo)
+      new(numeroCasilla,coste, TipoCasilla::CALLE, titulo)
     end
     
-    def self.new_casilla_impuesto(numeroCasilla, coste, tipo)
+    def self.new_casilla_no_calle(numeroCasilla, coste, tipo)
       new(numeroCasilla,coste,tipo,nil)
     end
 
@@ -44,6 +46,111 @@ module ModeloQytetet
           " \n Casilla{ \n    NumeroCasilla: #{@numeroCasilla} \n    Tipo: #{@tipo} \n }" 
         end
       end
+    end
+    
+    def get_tipo
+      @tipo
+    end
+    
+    def get_titulo_propiedad
+      @titulo
+    end
+    
+    def asignar_propietario(jugador)
+      
+    end
+    
+    def calcular_valor_hipoteca
+      
+    end
+    
+    def cancelar_hipoteca
+      
+    end
+    
+    def cobrar_alquiler
+      
+    end
+    
+    def edificar_casa
+      
+    end
+    
+    def edificar_hotel
+      
+    end
+    
+    def esta_hipotecada
+      
+    end
+    
+    def get_coste
+      @coste
+    end
+    
+    def get_coste_hipoteca
+      
+    end
+    
+    def get_numero_casilla
+      @numeroCasilla
+    end
+    
+    def get_num_casas
+      @numCasas
+    end
+    
+    def get_num_hoteles
+      @numHoteles
+    end
+    
+    def get_precio_edificar
+      
+    end
+    
+    def hipotecar
+      
+    end
+    
+    def precio_total_comprar
+      
+    end
+    
+    def propietario_encarcelado
+      
+    end
+    
+    def se_puede_edificar_casa
+      
+    end
+    
+    def se_puede_edificar_hotel
+      
+    end
+    
+    def set_num_casas(nuevoNumero)
+      @numCasas = nuevoNumero;
+    end
+    
+    def set_num_hoteles(nuevoNumero)
+      @numHoteles = nuevoNumero;
+    end
+      
+    def soy_edificable
+      
+    end
+    
+    def tengo_propietario
+      
+    end
+    
+    def vender_titulo
+      
+    end
+    
+    private
+    def asignar_titulo_propiedad
+      
     end
     
   end

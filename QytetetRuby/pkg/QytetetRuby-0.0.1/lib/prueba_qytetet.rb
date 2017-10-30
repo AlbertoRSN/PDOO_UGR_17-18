@@ -8,13 +8,17 @@ require_relative "casilla"
 require_relative "tipo_casilla"
 require_relative "titulo_propiedad"
 require_relative "tablero"
+require_relative "jugador"
 
 
 module ModeloQytetet
   
   class PruebaQytetet
     
+    #qytetet = Qytetet.instance
+    
     @@mazo = Array.new
+
     
     def self.inicializar_sorpresas
       @@mazo<< Sorpresa.new("¡Felicidades! Hoy es dia de pago, recibes: ", 100, TipoSorpresa::PAGARCOBRAR)
@@ -28,6 +32,8 @@ module ModeloQytetet
       @@mazo<< Sorpresa.new("Es tu dia de mala suerte, una apuesta te hace pagar a todos los jugadores", 50, TipoSorpresa::PORJUGADOR)
       @@mazo<< Sorpresa.new("¡Enhorabuena!, quedas en libertad ", 0, TipoSorpresa::SALIRCARCEL)
     end
+    
+    
     
     #Metodo que devuelve todas las cartas con valor>0
     def self.metodo1
@@ -56,12 +62,15 @@ module ModeloQytetet
       end
     end
     
+    
+    
     #Metodo main para hacer pruebas - Metodo de clase
-    def self.main
+    def self.main      
+      
       puts "\n-------------------METODO1 - VALORES > 0 ----------------------"
       metodo1
       puts "\n------------------------------------------------------------------"
-      puts "\n---------------METODO2 - TIPOSORPRESA=IRACASILL ------------------"
+      puts "\n---------------METODO2 - TIPOSORPRESA=IRACASILLA------------------"
       metodo2
       puts "\n------------------------------------------------------------------"
       puts "\n---------------METODO3 - TIPOSORPRESA = ARGUMENTO-----------------"
@@ -70,19 +79,25 @@ module ModeloQytetet
       
       puts "\n-----------------------MOSTRAR CASILLAS --------------------------"
       
-      puts Casilla.new(4, 10, TipoCasilla::CALLE, TituloPropiedad.new("HOLA", 10, 2, 10, 20))
-      puts Casilla.new_casilla(6, TipoCasilla::PARKING)
-      puts Casilla.new_casilla_impuesto(8, 100, TipoCasilla::IMPUESTO)
+      #puts Casilla.new_casilla_calle(4, 10, TituloPropiedad.new("HOLA", 10, 2, 10, 20))
+      puts Casilla.new_casilla_calle(4, 10, TituloPropiedad.crear_titulo_sin_propietario("HOLA", 10, 2, 10, 20))
+      puts Casilla.new_casilla_no_calle(6, 0, TipoCasilla::PARKING)
+      puts Casilla.new_casilla_no_calle(8, 100, TipoCasilla::IMPUESTO)
+      puts Casilla.new_casilla_calle(3, 100, TituloPropiedad.crear_titulo_con_propietario("Pedriiito", 10, 10.0, 100, 200, false, Jugador.new("Alberto"), Casilla.new_casilla_no_calle(6, 0, TipoCasilla::PARKING)))
       
-      puts "\n------------------------------------------------------------------"
+      puts "\n-----------------------------------------------------------------"
       
       puts "\n-----------------------MOSTRAR TABLERO---------------------------"
-      #COMO MOSTRAR EL TABLERO.
-      #Tablero t = Tablero.new()
       puts Tablero.new
-      
-      puts "\n------------------------------------------------------------------"
+      #puts qytetet.tablero
+      puts "\n-----------------------------------------------------------------"
           
+      
+      puts "\n-----------------------MOSTRAR JUGADOR---------------------------"
+      j1 = Jugador.new("Alberto Rodriguez")
+      puts j1
+      puts "\n-----------------------------------------------------------------"
+      
     end
     
   #End de la CLASE    
@@ -90,6 +105,5 @@ module ModeloQytetet
   
   PruebaQytetet.inicializar_sorpresas
   PruebaQytetet.main
-  
  
 end

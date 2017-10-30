@@ -8,6 +8,7 @@ class Sorpresa
   attr_accessor :valor
   attr_accessor :tipo
   
+ 
   def initialize(texto, valor, tipo)
     @texto=texto
     @valor=valor
