@@ -22,8 +22,7 @@ public class TituloPropiedad {
     
     
     //-----------CONSTRUCTOR POR PARAMETROS------------
-    private TituloPropiedad(){}
-    
+    //PROPIETARIO AL CREARLO ES NULO
     public TituloPropiedad(String nombre, int alquilerBase, float factorRevalorizacion, int hipotecaBase, int precioEdificar ){
         this.nombre=nombre;
         this.alquilerBase=alquilerBase;
@@ -120,7 +119,7 @@ public class TituloPropiedad {
     }
     
     boolean tengoPropietario(){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        return (propietario != null);
     }
     
     

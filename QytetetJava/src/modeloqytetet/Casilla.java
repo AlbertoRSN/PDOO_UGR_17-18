@@ -26,6 +26,7 @@ public class Casilla {
         this.tipo=tipo;
     }
 
+    //CONSTRUCTOR PARA CASILLAS DE TIPO CALLE
     public Casilla(int numeroCasilla, int coste, TipoCasilla tipo, TituloPropiedad titulo) {
         this.numeroCasilla = numeroCasilla;
         this.coste = coste;
@@ -106,7 +107,12 @@ public class Casilla {
     }
     
     boolean estaHipotecada(){
-        throw new UnsupportedOperationException("Sin Implementar");
+       boolean hipotecada=false;
+        
+        if(this.titulo.getHipotecada()==true)
+            hipotecada=true;
+        
+        return hipotecada;
     }
     
     int getCosteHipoteca(){
@@ -138,7 +144,10 @@ public class Casilla {
     }
     
     boolean soyEdificable(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        boolean edificable=false;
+        if(this.tipo == TipoCasilla.CALLE)
+            edificable=true;
+        return edificable;
     }
     
     boolean tengoPropietario(){

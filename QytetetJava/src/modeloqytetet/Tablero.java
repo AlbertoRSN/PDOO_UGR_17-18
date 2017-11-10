@@ -81,15 +81,27 @@ public class Tablero {
        
     //METODOS NUEVOS AÑADIDOS PRACTICA 2
     boolean esCasillaCarcel(int numeroCasilla){
-        throw new UnsupportedOperationException("Sin Implementar");
+        boolean esCarcel = false;
+        
+        if(numeroCasilla == carcel.getNumeroCasilla())
+            esCarcel=true;
+        
+        return esCarcel;
     }
     
     Casilla obtenerCasillaNumero(int numeroCasilla){
-        throw new UnsupportedOperationException("Sin Implementar");
+        Casilla casilla = null;
+        
+        casilla = casillas.get(numeroCasilla);
+        
+        return casilla;
     }
     
     Casilla obtenerNuevaCasilla(Casilla casilla, int desplazamiento){
-        throw new UnsupportedOperationException("Sin Implementar");
+
+        int numCasilla = (casilla.getNumeroCasilla()+desplazamiento)%casillas.size();
+        
+        return casillas.get(numCasilla);
     }
       
     

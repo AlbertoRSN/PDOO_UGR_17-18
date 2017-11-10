@@ -22,13 +22,11 @@ class Jugador {
     private boolean encarcelado = false;
     private String nombre;
     private int saldo = 7500;
-    //LOS INICIALIZO AQUI, O EN EL CONSTRUCTOR?
-     
+    
     //--------------------------------------------------------------------------------------
     //-----------------------------------CONSTRUCTORES--------------------------------------
     
     //Se hace el constructor sin parametros privado para que no se pueda crear un jugador vacio
-    private Jugador(){}
     
     public Jugador(String nombre){
         this.nombre = nombre;
@@ -38,19 +36,7 @@ class Jugador {
         this.cartaLibertad = null;
         this.casillaActual = new Casilla(0, 0, TipoCasilla.SALIDA);
     }
-    
-    
-    //CONSTRUCTOR DE PRUEBA PARA CREAR JUGADOR EN PRUEBA_QYTETET
-    public Jugador(String nombre, int saldo, boolean encarcelado, ArrayList<TituloPropiedad> prop, Sorpresa cartaLibertad, Casilla casillaActual){
-        this.nombre = nombre;
-        this.encarcelado = encarcelado;
-        this.saldo = saldo;
-        this.propiedades = prop;
-        this.cartaLibertad = cartaLibertad;
-        this.casillaActual = casillaActual;
-    }
-    
-    
+       
     //--------------------------------------------------------------------------------------
     //-----------------------------MODIFICADORES/CONSULTORES--------------------------------
 
@@ -96,7 +82,13 @@ class Jugador {
     //-------------------------------------METODOS------------------------------------------
     
     public boolean tengoPropiedades(){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        boolean tiene = false;
+        
+        for(TituloPropiedad p: propiedades)
+            if(p.getPropietario() == this)
+               tiene = true;
+        
+        return tiene;
     }
     
     boolean actualizarPosicion(Casilla casilla){
@@ -108,7 +100,14 @@ class Jugador {
     }
     
     Sorpresa devolverCartaLibertad(){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        Sorpresa s = cartaLibertad;
+        
+        if(cartaLibertad!=null){
+            cartaLibertad = null;
+        }
+        else
+            cartaLibertad = new Sorpresa("Hola", 0, TipoSorpresa.IRACASILLA);
+        return cartaLibertad;
     }
     
     void irACarcel(Casilla casilla){
@@ -116,15 +115,36 @@ class Jugador {
     }
     
     void modificarSaldo(int cantidad){
-        saldo=cantidad;
+        if(cantidad > 0)
+            saldo+=cantidad;
+        else
+            saldo -=cantidad;
     }
     
     int obtenerCapital(){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        int capitalTotal = saldo;
+        int costeTotal = 0;
+        int numCasasyHoteles = cuantasCasasHotelesTengo();
+        
+        for(TituloPropiedad p: propiedades){
+            costeTotal += p.getCasilla().getCoste(); //Coste de la propiedad
+            capitalTotal = costeTotal + (numCasasyHoteles * p.getCasilla().getPrecioEdificar());
+            if(p.getHipotecada())
+                capitalTotal -= p.getHipotecaBase();
+        }
+        
+        return capitalTotal;
     }
     
-    ArrayList obtenerPropiedadesHipotecadas(boolean hipotecada){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+    ArrayList<TituloPropiedad> obtenerPropiedadesHipotecadas(boolean hipotecada){
+        ArrayList<TituloPropiedad> props = new ArrayList(); //o a null
+        
+        for(TituloPropiedad p: propiedades){
+            if(p.getHipotecada() == hipotecada)
+                props.add(p);                
+        }
+        
+        return props;
     }
     
     void pagarCobrarPorCasaYHotel(int cantidad){
@@ -153,31 +173,57 @@ class Jugador {
     }
     
     boolean puedoVenderPropiedad(Casilla casilla){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        boolean puedo = false;
+        
+        for(TituloPropiedad p: propiedades)
+            if(p.getCasilla().equals(casilla))
+                puedo = true;
+        
+        return puedo;
     }
     
     boolean tengoCartaLibertad(){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        boolean tengoLibertad = false;
+        if(cartaLibertad != null)
+            tengoLibertad = true;
+        
+        return tengoLibertad;
     }
     
     void venderPropiedad(Casilla casilla){
         throw new UnsupportedOperationException("Sin Implementar"); 
     }
     
+    //DEVUELVE EL TOTAL DE CASAS Y HOTELES DE TODAS LA PROPIEDADES DEL JUGADOR.
     private int cuantasCasasHotelesTengo(){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        int total=0;
+        
+        for (TituloPropiedad p: propiedades){
+           total += p.getCasilla().getNumCasas();
+           total += p.getCasilla().getNumHoteles();
+        }
+        
+        return total;
     }
     
     private void eliminarDeMisPropiedades(Casilla casilla){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        for(TituloPropiedad p: propiedades)
+            if(p.getCasilla() == casilla)
+                propiedades.remove(propiedades.indexOf(p.getCasilla()));
     }
     
     private boolean esDeMiPropiedad(Casilla casilla){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        boolean esPropiedad = false;
+        
+        for(TituloPropiedad p: propiedades)
+            if(p.getCasilla().getTituloPropiedad() == casilla.getTituloPropiedad())
+                esPropiedad = true;
+        
+        return esPropiedad;
     }
     
-    private boolean tengoSaldo(int Cantidad){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+    private boolean tengoSaldo(int cantidad){
+        return (saldo >= cantidad);
     }
     
     
@@ -190,8 +236,10 @@ class Jugador {
                 "\n   Saldo: " + Integer.toString(saldo) + 
                 "\n   Encarcelado: " + encarcelado +
                 "\n   Casilla Actual: " + casillaActual.toString() + 
-                "\n   Carta Libertad: " + cartaLibertad.toString() +
-                "\n   Propiedades: " + propiedades.toString() + '}';
+                "\n   Carta Libertad: " + cartaLibertad +
+                "\n   Propiedades: " + propiedades + "\n}";
+        
+        //AÑADIR A UN STRING LO QUE QUIERO IMPRIMIR
     }
     
     

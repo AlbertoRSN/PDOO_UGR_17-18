@@ -16,10 +16,7 @@ public class Sorpresa {
     private int valor;
     
     
-    //----------------------------CONSTRUCTOR--------------------------------
-
-    private Sorpresa(){}
-    
+    //----------------------------CONSTRUCTOR--------------------------------    
     public Sorpresa(String texto, int valor, TipoSorpresa tipo){
         this.texto=texto;
         this.valor=valor;

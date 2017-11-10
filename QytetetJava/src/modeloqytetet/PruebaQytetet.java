@@ -23,17 +23,20 @@ public class PruebaQytetet {
         //Metemos las cartas en el mazo
         //inicializarSorpresas(); 
         
+        Dado dado = Dado.getInstance();
         Qytetet qytetet = Qytetet.getInstance();
         mazo = qytetet.getMazo();
         tablero = qytetet.getTablero();
         
+        
         //PARA CREAR JUGADOR CON PARAMETROS (CONSTRUCTOR CREADO PARA PROBAR)
         ArrayList<TituloPropiedad> props = new ArrayList();
         props.add(new TituloPropiedad("Salsipuedes", 100, 20, 1000, 750));
-        Jugador jugador = new Jugador("Alberto", 100, false, props, new Sorpresa("¡Felicidades! Hoy es dia de pago, recibes: ", 100, TipoSorpresa.PAGARCOBRAR), new Casilla(0, 0, TipoCasilla.SALIDA) );
+        
+        //Jugador jugador = new Jugador("Alberto", 100, false, props, new Sorpresa("¡Felicidades! Hoy es dia de pago, recibes: ", 100, TipoSorpresa.PAGARCOBRAR), new Casilla(0, 0, TipoCasilla.SALIDA) );
         
         //ERROR SI CREO EL JUGADOR DE LA SIGUIENTE MANERA:
-        //Jugador jugador = new Jugador("Alberto");
+        Jugador jugador = new Jugador("Alberto");
         
         ArrayList<Jugador> jugadores = qytetet.getJugadores();
         
@@ -65,6 +68,13 @@ public class PruebaQytetet {
         System.out.println("\n\n------------------MOSTRAR QYTETET--------------------");
         //Qytetet q = Qytetet.getInstance();
         System.out.println(qytetet);
+        
+        
+        System.out.println("\n\n------------------TIRAR DADO--------------------");
+        int n = dado.tirar();
+        System.out.println(n);
+        
+        
     
     }
     

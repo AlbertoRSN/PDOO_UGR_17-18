@@ -1,6 +1,8 @@
 
 package modeloqytetet;
 
+import java.util.Random;
+
 /**
  *
  * @author albertorodriguez
@@ -18,8 +20,11 @@ class Dado {
         return instance;
     }
     
+    
     int tirar(){
-      throw new UnsupportedOperationException("Sin Implementar");
+      Random rnd = new Random();
+      int dado = (int) (rnd.nextDouble() * 6 + 1);
+      return dado;
     }
     
     

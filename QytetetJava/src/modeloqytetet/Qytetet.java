@@ -30,6 +30,8 @@ public class Qytetet {
     private Jugador jugadorActual;
     private ArrayList<Jugador> jugadores = new ArrayList(); 
     
+
+    
     //Objeto de la clase DADO - Como es singleton solo se puede crear un Objeto.
     Dado dado = Dado.getInstance();
         
@@ -38,7 +40,7 @@ public class Qytetet {
     
     public static Qytetet getInstance(){
         instance.inicializarCartasSorpresa();
-        instance.inicializarTablero();
+        //instance.inicializarTablero();
         //instance.inicializarJugadores(nombres);
         return instance;
     }
@@ -138,15 +140,31 @@ public class Qytetet {
         return List;
     }
     
+    
     public ArrayList propiedadesHipotecadasJugador(boolean hipotecadas){
-        //ArrayList<Casilla> casillas = new ArrayList();
-        throw new UnsupportedOperationException("Sin Implementar");
-        //return casillas;
+
+        ArrayList<TituloPropiedad> propiedades = jugadorActual.obtenerPropiedadesHipotecadas(hipotecadas); //llamar al metodo obtenerPropiedas
+        
+        ArrayList<Casilla> propiedadesHipotecadas=null;
+        
+        for (TituloPropiedad t: propiedades) 
+            propiedadesHipotecadas.add(t.getCasilla());  
+        
+        return propiedadesHipotecadas;
+    }
+
+    //DEVUELVE EL SIGUIENTE JUGADOR, SI ES EL ULTIMO, DEVUELVE EL PRIMERO.
+    public Jugador siguienteJugador(){
+               
+        if(jugadores.indexOf(jugadorActual) == jugadores.size())
+            jugadorActual = jugadores.get(0);
+        else
+            jugadorActual = jugadores.get(jugadores.indexOf(jugadorActual)+1);
+            
+        return jugadorActual;
     }
     
-    public Jugador siguienteJugador(){
-        throw new UnsupportedOperationException("Sin Implementar");
-    }
+    
     
     public boolean venderPropiedad(Casilla casilla){
         throw new UnsupportedOperationException("Sin Implementar");
@@ -172,13 +190,8 @@ public class Qytetet {
     }
    
     private void inicializarJugadores(ArrayList<String> nombres){ 
-//       for(int i=0; i<getMAX_JUGADORES(); i++){
-//        jugadores.add(new Jugador(nombres.get(i)));
-//       }
-       int i=0;
-       while(nombres.get(i)!=null){
-           jugadores.add(new Jugador(nombres.get(i)));
-       }
+        for (String s: nombres)
+           jugadores.add(new Jugador(s));     
     }
     
     private void inicializarTablero(){
@@ -186,7 +199,18 @@ public class Qytetet {
     }
     
     private void salidaJugadores(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        
+        Casilla salida = new Casilla(0, 0, TipoCasilla.SALIDA);
+        int saldoInicial = 7500;
+        
+        for(int i=0; i<jugadores.size(); i++){
+            jugadores.get(i).actualizarPosicion(salida);
+            jugadores.get(i).modificarSaldo(saldoInicial);
+        }
+        
+        //Asigna de forma aleatoria el jugador que sale
+        Collections.shuffle(jugadores);
+        jugadorActual = jugadores.get(0);
     }
     
     //------------------------------------------------------------------------------------------------
@@ -194,7 +218,17 @@ public class Qytetet {
     @Override
     public String toString() {
         //MODIFICAR MAS ADELANTE PARA MOSTRAR TODO EL JUEGO.
-         return "{ \n Max Jugadores: " + MAX_JUGADORES + "\n Max Cartas: " + MAX_CARTAS + "\n Max. Casillas: " + MAX_CASILLAS + "\n Precio Libertad: " + PRECIO_LIBERTAD + "\n Saldo salida: " + SALDO_SALIDA +  " \n}";
+         return "{ \n Max Jugadores: " + MAX_JUGADORES + 
+                 "\n Max Cartas: " + MAX_CARTAS + 
+                 "\n Max. Casillas: " + MAX_CASILLAS + 
+                 "\n Precio Libertad: " + PRECIO_LIBERTAD + 
+                 "\n Saldo salida: " + SALDO_SALIDA +  
+                 "\n Carta Actual: " + cartaActual +
+                 "\n Jugador Actual: " + jugadorActual +
+                 "\n Jugadores: " + jugadores +
+                 "\n Tablero: " + tablero +
+                 "\n Mazo: " + mazo +
+                 " \n}";
     }
     
     
