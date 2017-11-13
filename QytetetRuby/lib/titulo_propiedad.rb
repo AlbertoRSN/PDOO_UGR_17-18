@@ -1,6 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
 
 module ModeloQytetet
   
@@ -21,9 +19,8 @@ module ModeloQytetet
     
     
     #---------------------------CONSTRUCTORES----------------------------
-    private_class_method :new
-    
-    def initialize(nombre, alquilerBase, factorRevalorizacion, hipotecaBase, precioEdificar, propietario, casilla)
+  
+    def initialize(nombre, alquilerBase, factorRevalorizacion, hipotecaBase, precioEdificar)#,casilla);
       @nombre = nombre
       @alquilerBase = alquilerBase
       @factorRevalorizacion = factorRevalorizacion
@@ -31,15 +28,7 @@ module ModeloQytetet
       @hipotecaBase = hipotecaBase
       @precioEdificar = precioEdificar
       @propietario = nil
-      @casilla = casilla
-    end
-    
-    def self.crear_titulo_sin_propietario(nombre, alquilerBase, factorRevalorizacion, hipotecaBase, precioEdificar)
-      new(nombre,alquilerBase,factorRevalorizacion,hipotecaBase,precioEdificar,nil, nil)
-    end
-    
-    def self.crear_titulo_con_propietario(nombre, alquilerBase, factorRevalorizacion, hipotecaBase, precioEdificar, hipotecada, propietario, casilla)
-      new(nombre, alquilerBase, factorRevalorizacion, hipotecaBase, precioEdificar, propietario, casilla)
+      @casilla = nil
     end
 
     #----------------------------------------------------------------------
@@ -55,7 +44,11 @@ module ModeloQytetet
     end
     
     def tengo_propietario
-      
+      tengo = false
+      if(@propietario != nil)
+        tengo = true
+      end
+      tengo
     end
     
     

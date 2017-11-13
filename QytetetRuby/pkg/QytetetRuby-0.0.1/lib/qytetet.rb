@@ -1,6 +1,7 @@
 #encoding: utf-8
 
-requite "singleton"
+require "singleton"
+require_relative "dado"
 
 module ModeloQytetet
   
@@ -20,6 +21,7 @@ module ModeloQytetet
     attr_accessor :cartaActual
     attr_accessor :jugadorActual
     attr_accessor :tablero
+    attr_accessor :jugadores
     
     dado = Dado.instance
     
@@ -29,6 +31,8 @@ module ModeloQytetet
       @cartaActual=nil
       @tablero = nil
       @jugadorActual = nil
+      @jugadores = nil
+      #inicializar_tablero
     end
     
     #--------------------------METODOS------------------------------
@@ -63,20 +67,39 @@ module ModeloQytetet
     def obtener_ranking(list)      
     end
     
-    def propiedades_hipotecadas_jugador(hipotecadas)     
+    def propiedades_hipotecadas_jugador(hipotecadas)
+      
+      propiedades = Array.new
+      propiedades = @jugadorActual.obtener_propiedades_hipotecadas(hipotecadas)
+      
+      casilla_propiedad = Array.new
+      
+      propiedades.each do |p|
+        casilla_propiedad<<p.casilla
+      end
+  
+      casilla_propiedad
     end
     
-    def siguiente_jugador     
+    def siguiente_jugador
+      numeroJug = @jugadores.index(@jugadorActual)
+      
+      if(numeroJug == @jugadores.length)
+        @jugadorActual=@jugadores.at(0)
+      else 
+        @jugadorActual=@jugadores.at(numeroJug+1)
+      end
+      #@jugadorActual
     end
-    
+
     def vender_propiedad(casilla)      
     end
     
+    #METODOS PRIVADOS
     private
     def encarcelar_jugador
     end
     
-    private
     def inicializar_cartas_sorpresa
       @mazo<< Sorpresa.new("¡Felicidades! Hoy es dia de pago, recibes: ", 100, TipoSorpresa::PAGARCOBRAR)
       @mazo<< Sorpresa.new("¡Mala Suerte! Dia de impuestos, te toca pagar: ", 50, TipoSorpresa::PAGARCOBRAR)
@@ -92,24 +115,45 @@ module ModeloQytetet
       @mazo.shuffle! 
     end
     
-    private
+    
     def inicializar_jugadores(nombres)
       nombres.each { |n|
         @jugadores << Jugador.new(n)
       }
     end
     
-    private
+    
     def inicializar_tablero
       @tablero = Tablero.new
     end
     
-    private
+    
     def salida_jugadores
+      
+      salida = Casilla.new_casilla_no_calle(0, 0, TipoCasilla::SALIDA)
+      
+      @jugadores.each do |j|
+        j.modificar_saldo(7500)
+        j.actualizar_posicion(salida)
+      end
+      
+      @jugadores.shuffle!
+      @jugadorActual = @jugadores.at(0)
     end
     
+    public
     def to_s()
-     #con todas las variables que no sean nulas 
+      "\n\tMAX Jugadores: #{@@MAX_JUGADORES} 
+        MAX Cartas: #{@@MAX_CARTAS} 
+        Precio Libertad: #{@@PRECIO_LIBERTAD} 
+        Saldo Salida: #{@@SALDO_SALIDA}
+      \n -TABLERO- #{@tablero}
+      \n - JUGADORES - #{@jugadores}
+      \n Mazo: #{@mazo}
+      \n Jugador Actual: #{@jugadorActual}
+      \n Carta Actual: #{@cartaActual}"
+      
+      
     end
     
     

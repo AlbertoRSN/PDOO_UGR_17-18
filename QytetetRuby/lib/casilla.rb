@@ -1,6 +1,4 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+#encoding: utf-8
 
 module ModeloQytetet
   
@@ -48,14 +46,6 @@ module ModeloQytetet
       end
     end
     
-    def get_tipo
-      @tipo
-    end
-    
-    def get_titulo_propiedad
-      @titulo
-    end
-    
     def asignar_propietario(jugador)
       
     end
@@ -81,29 +71,19 @@ module ModeloQytetet
     end
     
     def esta_hipotecada
+      esta = false
       
-    end
-    
-    def get_coste
-      @coste
+      if(titulo.hipotecada == true)
+        esta = true
+      end
+      
+      esta
     end
     
     def get_coste_hipoteca
       
     end
-    
-    def get_numero_casilla
-      @numeroCasilla
-    end
-    
-    def get_num_casas
-      @numCasas
-    end
-    
-    def get_num_hoteles
-      @numHoteles
-    end
-    
+ 
     def get_precio_edificar
       
     end
@@ -137,7 +117,11 @@ module ModeloQytetet
     end
       
     def soy_edificable
-      
+      edificable = false
+      if(tipo == TipoCasilla::CALLE)
+        edificable = true
+      end
+      edificable
     end
     
     def tengo_propietario

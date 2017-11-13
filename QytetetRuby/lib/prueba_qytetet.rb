@@ -9,13 +9,14 @@ require_relative "tipo_casilla"
 require_relative "titulo_propiedad"
 require_relative "tablero"
 require_relative "jugador"
+require_relative "qytetet"
+require_relative "dado"
 
 
 module ModeloQytetet
   
   class PruebaQytetet
     
-    #qytetet = Qytetet.instance
     
     @@mazo = Array.new
 
@@ -67,6 +68,9 @@ module ModeloQytetet
     #Metodo main para hacer pruebas - Metodo de clase
     def self.main      
       
+      qytetet = Qytetet.instance
+      dado = Dado.instance
+      
       puts "\n-------------------METODO1 - VALORES > 0 ----------------------"
       metodo1
       puts "\n------------------------------------------------------------------"
@@ -79,16 +83,20 @@ module ModeloQytetet
       
       puts "\n-----------------------MOSTRAR CASILLAS --------------------------"
       
+      #NO ME HE ENTERADO BIEN DE PASARLE CASILLA COMO ARGUMENTO
+      #casilla2 = Casilla.new_casilla_calle(6, 0, TituloPropiedad.new("Hola",10,20,200,200,casilla2)) 
+      #puts casilla2
       #puts Casilla.new_casilla_calle(4, 10, TituloPropiedad.new("HOLA", 10, 2, 10, 20))
-      puts Casilla.new_casilla_calle(4, 10, TituloPropiedad.crear_titulo_sin_propietario("HOLA", 10, 2, 10, 20))
       puts Casilla.new_casilla_no_calle(6, 0, TipoCasilla::PARKING)
       puts Casilla.new_casilla_no_calle(8, 100, TipoCasilla::IMPUESTO)
-      puts Casilla.new_casilla_calle(3, 100, TituloPropiedad.crear_titulo_con_propietario("Pedriiito", 10, 10.0, 100, 200, false, Jugador.new("Alberto"), Casilla.new_casilla_no_calle(6, 0, TipoCasilla::PARKING)))
+      #puts Casilla.new_casilla_calle(3, 100, TituloPropiedad.crear_titulo_con_propietario("Pedriiito", 10, 10.0, 100, 200, false, Jugador.new("Alberto"), Casilla.new_casilla_no_calle(6, 0, TipoCasilla::PARKING)))
       
       puts "\n-----------------------------------------------------------------"
       
       puts "\n-----------------------MOSTRAR TABLERO---------------------------"
-      puts Tablero.new
+      tablero = Tablero.new
+      puts tablero
+      #qytetet.inicializar_tablero
       #puts qytetet.tablero
       puts "\n-----------------------------------------------------------------"
           
@@ -97,6 +105,19 @@ module ModeloQytetet
       j1 = Jugador.new("Alberto Rodriguez")
       puts j1
       puts "\n-----------------------------------------------------------------"
+      
+      puts "\n-----------------------CASILLA_CARCEL---------------------------"
+      puts tablero.es_casilla_carcel(3)
+      puts tablero.es_casilla_carcel(5)
+      puts "\n-----------------------------------------------------------------"
+      
+      
+      puts "\n-----------------------MOSTRAR QYTETET---------------------------"
+      puts qytetet
+      puts "\n-----------------------------------------------------------------"
+     
+      puts "\n-----------------------TIRAR DADO---------------------------"
+      puts dado.tirar
       
     end
     
