@@ -64,7 +64,7 @@ public class TituloPropiedad {
     int getAlquilerBase() {
         return alquilerBase;
     }
-
+    
     public void setAlquilerBase(int alquilerBase) {
         this.alquilerBase = alquilerBase;
     }
@@ -110,8 +110,10 @@ public class TituloPropiedad {
         this.casilla = casilla;
     }
     
-    void cobrarAlquiler(int coste){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+    void cobrarAlquiler(int costeAlquiler){
+        int coste = (int)(casilla.getNumCasas()*0.5 + casilla.getNumHoteles()*2);
+        costeAlquiler = alquilerBase + coste;
+        propietario.modificarSaldo(costeAlquiler);
     }
     
     boolean propietarioEncarcelado(){

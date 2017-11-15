@@ -31,7 +31,7 @@ public class Tablero {
     //-----------------------------METODOS--------------------------------------------
     
     //Modificado p2 -> Antes era public, ahora package
-    Casilla getCarcel() {
+    Casilla getCarcel(){
         return carcel;
     }
 

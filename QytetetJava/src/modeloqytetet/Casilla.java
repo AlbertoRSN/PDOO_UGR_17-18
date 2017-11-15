@@ -83,11 +83,15 @@ public class Casilla {
     //---------------------------------------------------------------------------------------
     //--------------------------------METODOS AÑADIDOS P2------------------------------------
     TituloPropiedad asignarPropietario(Jugador jugador){
-        throw new UnsupportedOperationException("Sin Implementar");
+        titulo.setPropietario(jugador);
+        return titulo;
     }
     
     int calcularValorHipoteca(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int cantidad;
+        int hipotecaBase = titulo.getHipotecaBase();
+        cantidad = hipotecaBase + (int)(numCasas*0.5*hipotecaBase + numHoteles*hipotecaBase);
+        return cantidad;
     }
     
     int cancelarHipoteca(){
@@ -107,11 +111,8 @@ public class Casilla {
     }
     
     boolean estaHipotecada(){
-       boolean hipotecada=false;
-        
-        if(this.titulo.getHipotecada()==true)
-            hipotecada=true;
-        
+        boolean hipotecada;
+        hipotecada = this.titulo.getHipotecada();
         return hipotecada;
     }
     
@@ -124,7 +125,10 @@ public class Casilla {
     }
     
     int hipotecar(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int cantidadRecibida;
+        titulo.setHipotecada(true);
+        cantidadRecibida = calcularValorHipoteca();
+        return cantidadRecibida;
     }
     
     int precioTotalComprar(){
@@ -132,7 +136,7 @@ public class Casilla {
     }
     
     boolean propietarioEncarcelado(){
-        throw new UnsupportedOperationException("Sin Implementar");
+       return titulo.propietarioEncarcelado();
     }
     
     boolean sePuedeEdificarCasa(){
@@ -151,11 +155,19 @@ public class Casilla {
     }
     
     boolean tengoPropietario(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        return titulo.tengoPropietario();
     }
     
     int venderTitulo(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int precioVenta, precioCompra;
+        titulo.setPropietario(null);
+        setNumCasas(0);
+        setNumHoteles(0);
+        
+        precioCompra = coste + (numCasas + numHoteles)*titulo.getPrecioEdificar();
+        precioVenta = precioCompra + (int)titulo.getFactorRevalorizacion()*precioCompra;
+        
+        return precioVenta;
     }
     
     private void asignarTituloPropiedad(){
