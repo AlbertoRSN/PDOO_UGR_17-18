@@ -95,19 +95,39 @@ public class Casilla {
     }
     
     int cancelarHipoteca(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int hipotecaBase = titulo.getHipotecaBase();
+        int cantidadRecibida = hipotecaBase + (int)(numCasas*0.5*hipotecaBase + numHoteles*hipotecaBase);
+        int cantidadPagar = cantidadRecibida + (int)(cantidadRecibida*0.1);
+        
+        return cantidadPagar;
     }
     
     int cobrarAlquiler(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int costeAlquilerBase = titulo.getAlquilerBase();
+        int costeAlquiler;
+        
+        costeAlquiler = costeAlquilerBase + (int)(numCasas*0.5 + numHoteles*2);
+        titulo.cobrarAlquiler(costeAlquiler);
+        
+        return costeAlquiler;
     }
     
     int edificarCasa(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int costeEdificarCasa;
+        
+        setNumCasas(numCasas+1);
+        costeEdificarCasa = getPrecioEdificar();
+        
+        return costeEdificarCasa;
     }
     
     int edificarHotel(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        int costeEdificarHotel;
+        
+        setNumHoteles(numHoteles+1);
+        costeEdificarHotel = getPrecioEdificar();
+        
+        return costeEdificarHotel;
     }
     
     boolean estaHipotecada(){
@@ -117,11 +137,11 @@ public class Casilla {
     }
     
     int getCosteHipoteca(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        return titulo.getHipotecaBase();
     }
     
     int getPrecioEdificar(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        return titulo.getPrecioEdificar();
     }
     
     int hipotecar(){
@@ -140,11 +160,11 @@ public class Casilla {
     }
     
     boolean sePuedeEdificarCasa(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        return (numCasas < 4);
     }
     
     boolean sePuedeEdificarHotel(){
-        throw new UnsupportedOperationException("Sin Implementar");
+        return (numHoteles < 4);
     }
     
     boolean soyEdificable(){

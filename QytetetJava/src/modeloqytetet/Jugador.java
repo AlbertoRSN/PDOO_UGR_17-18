@@ -16,7 +16,7 @@ class Jugador {
     private Casilla casillaActual=null;
     
     //Atributo de TituloPropiedad
-    private ArrayList<TituloPropiedad> propiedades = null; //new ArrayList();
+    private ArrayList<TituloPropiedad> propiedades = new ArrayList();
     
     //Atributos propios 
     private boolean encarcelado = false;
@@ -82,15 +82,8 @@ class Jugador {
     //-------------------------------------METODOS------------------------------------------
     
     public boolean tengoPropiedades(){
-//        boolean tiene = false;
-//        
-//        for(TituloPropiedad p: propiedades)
-//            if(p.getPropietario() == this)
-//               tiene = true;
-//        
-//        return tiene;
+        return !propiedades.isEmpty();
         
-        return (propiedades != null);
     }
     
     boolean actualizarPosicion(Casilla casilla){
@@ -148,14 +141,9 @@ class Jugador {
     }
     
     Sorpresa devolverCartaLibertad(){
-        Sorpresa s = cartaLibertad;
-        
-        if(cartaLibertad!=null){
-            cartaLibertad = null;
-        }
-        else
-            cartaLibertad = new Sorpresa("Hola", 0, TipoSorpresa.IRACASILLA);
-        return cartaLibertad;
+        Sorpresa carta = cartaLibertad;
+        cartaLibertad = null;
+        return carta;
     }
     
     void irACarcel(Casilla casilla){
@@ -176,7 +164,7 @@ class Jugador {
         int numCasasyHoteles = cuantasCasasHotelesTengo();
         
         for(TituloPropiedad p: propiedades){
-            costeTotal += p.getCasilla().getCoste(); //Coste de la propiedad
+            costeTotal += p.getCasilla().getCoste(); 
             capitalTotal = costeTotal + (numCasasyHoteles * p.getCasilla().getPrecioEdificar());
             if(p.getHipotecada())
                 capitalTotal -= p.getHipotecaBase();
@@ -185,8 +173,9 @@ class Jugador {
         return capitalTotal;
     }
     
+    
     ArrayList<TituloPropiedad> obtenerPropiedadesHipotecadas(boolean hipotecada){
-        ArrayList<TituloPropiedad> props = new ArrayList(); //o a null
+        ArrayList<TituloPropiedad> props = new ArrayList();
         
         for(TituloPropiedad p: propiedades){
             if(p.getHipotecada() == hipotecada)
@@ -212,11 +201,29 @@ class Jugador {
     }
     
     boolean puedoEdificarCasa(Casilla casilla){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        boolean esMia = esDeMiPropiedad(casilla);
+        boolean tengoSaldo = false;
+        int costeEdificarCasa = casilla.getTituloPropiedad().getPrecioEdificar();
+        
+        if(esMia){
+            costeEdificarCasa = casilla.getPrecioEdificar();
+            tengoSaldo = tengoSaldo(costeEdificarCasa);
+        }
+        
+        return esMia && tengoSaldo;
     }
     
     boolean puedoEdificarHotel(Casilla casilla){
-        throw new UnsupportedOperationException("Sin Implementar"); 
+        boolean esMia = esDeMiPropiedad(casilla);
+        boolean tengoSaldo = false;
+        int costeEdificarHotel = casilla.getTituloPropiedad().getPrecioEdificar();
+        
+        if(esMia){
+            costeEdificarHotel = casilla.getPrecioEdificar();
+            tengoSaldo = tengoSaldo(costeEdificarHotel);
+        }
+        
+        return esMia && tengoSaldo;
     }
     
     boolean puedoHipotecar(Casilla casilla){
@@ -268,9 +275,7 @@ class Jugador {
     }
     
     private void eliminarDeMisPropiedades(Casilla casilla){
-        for(TituloPropiedad p: propiedades)
-            if(p.getCasilla() == casilla)
-                propiedades.remove(propiedades.indexOf(p.getCasilla()));
+        propiedades.remove(casilla.getTituloPropiedad());
     }
     
     private boolean esDeMiPropiedad(Casilla casilla){
