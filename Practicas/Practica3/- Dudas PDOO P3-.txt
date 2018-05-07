@@ -1,0 +1,23 @@
+- Dudas PDOO P3-
+
+	Diagrama aplicarSorpresa -> como hago tantas condiciones sin haber una clausula ELSE final?
+								paso 2. numeroCasilla lo obtiene con getValor?????
+								en opt de PORJUGADOR -> jugador<>jugadorActual??? Este jugador es un objeto nuevo?
+								Donde meter la ultima opcion de incluirAlFianal?
+								IncluirAlFinal es un simple add, o hay algo en java para hacer push().
+	
+	2. lo hace con getValor porque segun, se mira valor para coste o casilla.
+	Poner todos if. 
+	Simbolo <> es distinto
+	IncluirAlFinal es add
+
+___________________________________________________________________________________________________________________
+
+	Diagrama Jugar -> Resolucion dudas frecuentes (3.)
+
+	Diagrama AplicarSopresa -> no entiendo bien 7. jugador = siguiente(); y cuando jhace la comparacion de Jugador con JugadorActual
+							   Es jugador un objeto de tipoJugador creado en el metodo??
+
+	Diagrama edificarCasa -> 2 - 2.3 ¿?
+							 4. modificarSaldo en uno pone -costeEdificarCasa y otro +
+
